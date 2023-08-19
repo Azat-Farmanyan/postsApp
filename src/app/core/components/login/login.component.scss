@@ -1,0 +1,85 @@
+.login {
+  .login-body {
+    display: flex;
+    justify-content: space-between;
+    min-height: 100vh;
+
+    .left-side {
+      background: url("../../../../assets/backgrounds/violet-bg.png") no-repeat top center;
+      background-size: cover;
+
+      flex: 0 47%;
+      flex-grow: 1;
+
+      position: relative;
+      .greeting {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-content: center;
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        .login-title {
+          color: #fff;
+          font-family: Roboto;
+          font-size: 84px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: normal;
+        }
+        .login-description {
+          color: #fff;
+          font-family: Roboto;
+          font-size: 84px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+        }
+        .login-title,
+        .login-description {
+          @media only screen and (max-width: 900px) {
+            font-size: 60px;
+          }
+        }
+      }
+    }
+    .right-side {
+      flex: 0 47%;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .login-block-title {
+        color: #3f51b5;
+        font-family: Roboto;
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        margin-bottom: 60px;
+      }
+      .login-form {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        width: 100%;
+
+        .error {
+          color: #f44336;
+        }
+
+        .example-form {
+          min-width: 150px;
+          max-width: 500px;
+          width: 100%;
+        }
+        .example-full-width {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

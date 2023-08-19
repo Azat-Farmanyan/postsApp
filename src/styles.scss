@@ -1,4 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import url("./null.scss");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.wrapper {
+  padding: 0 50px;
+  @media only screen and (max-width: 900px) {
+    padding: 0 30px;
+  }
+  @media only screen and (max-width: 700px) {
+    padding: 0 20px;
+  }
+}
+.disabled {
+  cursor: not-allowed;
+}
