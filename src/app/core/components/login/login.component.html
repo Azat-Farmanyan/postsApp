@@ -1,13 +1,18 @@
 <section class='login'>
   <div class="login-body">
-    <!-- <button mat-flat-button color="primary">Primary</button> -->
+
+
     <div *ngIf="!mobileView" class="left-side">
+      <img src="../../../../assets/page-logo/myPostsWhiteTItle.png" alt="" class="page-logo">
       <div class="greeting">
         <h1 class='login-title'>Hello,</h1>
         <p class='login-description'>welcome!</p>
       </div>
     </div>
     <div class="right-side wrapper">
+      <img *ngIf="mobileView" src="../../../../assets/page-logo/myPostsBlueTitle.png" alt=""
+        class="page-logo-right-side page-logo">
+
       <h3 class='login-block-title'>Login</h3>
       <form class='login-form' [formGroup]="loginForm" (ngSubmit)="submit()">
 
@@ -57,6 +62,7 @@
           color="warn">
           LOGIN
         </button>
+
       </form>
     </div>
   </div>
