@@ -4,7 +4,7 @@ import { LoginInfo } from '../interfaces/interfaces';
 @Injectable({
   providedIn: 'root',
 })
-export class LocalStorageService {
+export class LoginInfoService {
   private storageKey = 'userLogin';
 
   constructor() {}

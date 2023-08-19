@@ -3,14 +3,15 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
-  selector: 'app-post-details',
-  templateUrl: './post-details.component.html',
-  styleUrls: ['./post-details.component.scss'],
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss'],
 })
-export class PostDetailsComponent {
+export class HeaderComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
-  back() {
-    this.router.navigate(['/posts']);
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }

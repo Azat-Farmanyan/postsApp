@@ -1,4 +1,5 @@
-import { LocalStorageService } from './core/services/local-storage.service';
+import { AuthService } from './core/services/auth.service';
+import { LoginInfoService } from './core/services/loginInfo.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'Posts-App';
 
-  constructor(private localStorageService: LocalStorageService) {}
+  constructor(
+    private loginInfoService: LoginInfoService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
-    this.localStorageService.saveLoginInfo('test@gmail.com', '12345678');
+    this.loginInfoService.saveLoginInfo('test@gmail.com', '12345678');
+    this.authService.logout();
   }
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PostDetailsComponent } from './core/components/post-list/post-details/post-details.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -16,7 +17,10 @@ const routes: Routes = [
         (m) => m.PostListModule
       ),
   },
-  { path: 'posts/:id', component: PostDetailsComponent },
+  // {
+  //   path: 'posts/:id',
+  //   component: PostDetailsComponent,
+  // },
   { path: '**', redirectTo: '/login' },
 ];
 

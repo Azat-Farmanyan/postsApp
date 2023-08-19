@@ -1,4 +1,5 @@
-import { LocalStorageService } from './../../services/local-storage.service';
+import { AuthService } from './../../services/auth.service';
+import { LoginInfoService } from '../../services/loginInfo.service';
 import { Component, HostListener, OnInit } from '@angular/core';
 import {
   FormGroup,
@@ -46,7 +47,8 @@ export class LoginComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
 
   constructor(
-    private localStorageService: LocalStorageService,
+    private loginInfoService: LoginInfoService,
+    private authService: AuthService,
     private router: Router
   ) {}
 
@@ -54,14 +56,17 @@ export class LoginComponent implements OnInit {
     this.windowResizable();
 
     this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [
+      email: new FormControl('test@gmail.com', [
+        Validators.required,
+        Validators.email,
+      ]),
+      password: new FormControl('12345678', [
         Validators.required,
         Validators.minLength(8),
       ]),
     });
 
-    this.loginInfo = this.localStorageService.getLoginInfo() as LoginInfo;
+    this.loginInfo = this.loginInfoService.getLoginInfo() as LoginInfo;
 
     if (window.innerWidth < 700) {
       this.mobileView = true;
@@ -96,6 +101,7 @@ export class LoginComponent implements OnInit {
         password === this.loginInfo.password
       ) {
         console.log('login success');
+        this.authService.login();
         this.router.navigate(['/posts']);
       }
       if (email !== this.loginInfo.email) this.invalidEmail = true;
