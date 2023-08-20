@@ -13,9 +13,7 @@ export class AuthService {
   }
 
   logout() {
-    // localStorage.setItem('isAuth', 'false');
     localStorage.removeItem('isAuth');
-
     this.isAuth.next('false');
   }
 }

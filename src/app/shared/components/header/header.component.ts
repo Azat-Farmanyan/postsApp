@@ -1,17 +1,34 @@
+import { trigger, transition, style, animate } from '@angular/animations';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate(300, style({ opacity: 1 })),
+      ]),
+      transition(':leave', [animate(300, style({ opacity: 0 }))]),
+    ]),
+  ],
 })
 export class HeaderComponent {
-  constructor(private authService: AuthService, private router: Router) {}
+  showLogoutModal: boolean = false;
+
+  constructor(private router: Router) {}
 
   logout() {
-    this.authService.logout();
-    this.router.navigate(['/login']);
+    this.showLogoutModal = true;
+  }
+  cancel() {
+    this.showLogoutModal = false;
+  }
+
+  goToPosts() {
+    this.router.navigate(['/posts']);
   }
 }

@@ -17,6 +17,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginInfoService.saveLoginInfo('test@gmail.com', '12345678');
-    this.authService.logout();
+    // this.authService.logout();
   }
 }

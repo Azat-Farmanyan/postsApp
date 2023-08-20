@@ -16,6 +16,7 @@ const routes: Routes = [
       import('./core/components/post-list/post-list.module').then(
         (m) => m.PostListModule
       ),
+    canActivate: [AuthGuard],
   },
   // {
   //   path: 'posts/:id',

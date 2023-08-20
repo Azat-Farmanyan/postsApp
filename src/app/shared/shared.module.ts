@@ -4,9 +4,10 @@ import { HeaderComponent } from './components/header/header.component';
 
 // Angular Material Modules
 import { MatButtonModule } from '@angular/material/button';
+import { LogoutModalComponent } from './components/header/logout-modal/logout-modal.component';
 
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, LogoutModalComponent],
   imports: [CommonModule, MatButtonModule],
   exports: [HeaderComponent],
 })

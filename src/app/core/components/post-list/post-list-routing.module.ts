@@ -5,14 +5,20 @@ import { AuthGuard } from '../../guards/auth.guard';
 import { PostDetailsComponent } from './post-details/post-details.component';
 
 const routes: Routes = [
-  { path: '', component: PostListComponent, canActivate: [AuthGuard] },
+  { path: '', component: PostListComponent },
   {
     path: ':id',
     component: PostDetailsComponent,
-    canActivateChild: [AuthGuard],
   },
 ];
-
+// const routes: Routes = [
+//   { path: '', component: PostListComponent, canActivate: [AuthGuard] },
+//   {
+//     path: ':id',
+//     component: PostDetailsComponent,
+//     canActivateChild: [AuthGuard],
+//   },
+// ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
