@@ -9,6 +9,6 @@ import { LogoutModalComponent } from './components/header/logout-modal/logout-mo
 @NgModule({
   declarations: [HeaderComponent, LogoutModalComponent],
   imports: [CommonModule, MatButtonModule],
-  exports: [HeaderComponent],
+  exports: [HeaderComponent, LogoutModalComponent],
 })
 export class SharedModule {}
