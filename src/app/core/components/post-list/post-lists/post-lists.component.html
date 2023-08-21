@@ -1,5 +1,13 @@
 <app-header></app-header>
-<div class="wrapper">
+
+<section class='post-list'>
+  <div class="wrapper">
+    <div class="post-list-body">
+      <app-post-card [routerLink]="['/posts', post.id]" *ngFor="let post of posts" [post]="post"></app-post-card>
+    </div>
+  </div>
+</section>
+<!-- <div class="wrapper">
   <h1>{{'post-list works! '| uppercase}}</h1>
   <button (click)="post()" mat-flat-button color="warn">go to post</button>
-</div>
+</div> -->

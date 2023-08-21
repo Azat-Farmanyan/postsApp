@@ -19,7 +19,7 @@ export class HeaderComponent {
     this.showLogoutModal = false;
   }
 
-  goToPosts() {
+  backHome() {
     this.router.navigate(['/posts']);
   }
 }

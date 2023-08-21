@@ -1,0 +1,9 @@
+.post-list {
+  .post-list-body {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+
+    padding: 60px 0;
+  }
+}

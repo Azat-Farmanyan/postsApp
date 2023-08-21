@@ -1,0 +1,11 @@
+.example-card {
+  // max-width: 400px;
+  // width: 100%;
+  transition: all 0.5s ease;
+  display: flex;
+  gap: 15px;
+
+  &:hover {
+    background-color: #e4e9ff;
+  }
+}
