@@ -1,13 +1,25 @@
 <app-header></app-header>
+<mat-progress-bar *ngIf="loading" color="accent" mode="indeterminate" value="40"></mat-progress-bar>
 
 <section class='post-list'>
   <div class="wrapper">
     <div class="post-list-body">
-      <app-post-card [routerLink]="['/posts', post.id]" *ngFor="let post of posts" [post]="post"></app-post-card>
+      <mat-spinner class='spinner' *ngIf="loading"></mat-spinner>
+      <app-error-message (onReload)="getPosts()" *ngIf="isError;else postsBlock"
+        [errorMessage]="errorMessage"></app-error-message>
+
+      <ng-template #postsBlock>
+
+        <div class="posts" *ngIf="posts.length > 0;else noPostsBlock">
+          <app-post-card [routerLink]="['/posts', post.id]" *ngFor="let post of posts" [post]="post"></app-post-card>
+        </div>
+
+        <ng-template #noPostsBlock>
+          <h3 *ngIf="!loading" style='margin-top: 60px;'>There are no Posts</h3>
+        </ng-template>
+
+      </ng-template>
     </div>
+
   </div>
 </section>
-<!-- <div class="wrapper">
-  <h1>{{'post-list works! '| uppercase}}</h1>
-  <button (click)="post()" mat-flat-button color="warn">go to post</button>
-</div> -->

@@ -1,9 +1,10 @@
 .example-card {
-  // max-width: 400px;
-  // width: 100%;
+  cursor: pointer;
   transition: all 0.5s ease;
   display: flex;
   gap: 15px;
+
+  border: 1px solid #e4e9ff;
 
   &:hover {
     background-color: #e4e9ff;

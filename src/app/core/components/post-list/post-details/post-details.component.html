@@ -1,12 +1,23 @@
 <app-header></app-header>
+<mat-progress-bar *ngIf="loading" color="accent" mode="indeterminate" value="40"></mat-progress-bar>
+
 <div class="post-detail">
   <div class="wrapper">
-    <div class="post-detail-body">
-      <button (click)="back()" class='go-back' mat-flat-button color="warn">
+    <mat-spinner class='spinner' *ngIf="loading"></mat-spinner>
+
+
+    <div class="post-detail-body" *ngIf="!loading">
+      <button (click)="back()" class='go-back' mat-flat-button color="primary">
         Go Back</button>
 
+      <app-error-message (onReload)="getPost(postID)" *ngIf="isError;else postCard"
+        [errorMessage]="errorMessage"></app-error-message>
 
-      <app-post-card [post]="post" [showBtns]="false"></app-post-card>
+
+      <ng-template #postCard>
+        <app-post-card [post]="post" [showBtns]="false"></app-post-card>
+      </ng-template>
+
     </div>
   </div>
 </div>

@@ -8,3 +8,8 @@ export interface Post {
   title: string;
   body: string;
 }
+
+export interface ErrorMessage {
+  name: string;
+  message: string;
+}

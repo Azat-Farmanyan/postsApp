@@ -56,11 +56,8 @@ export class LoginComponent implements OnInit {
     this.windowResizable();
 
     this.loginForm = new FormGroup({
-      email: new FormControl('test@gmail.com', [
-        Validators.required,
-        Validators.email,
-      ]),
-      password: new FormControl('12345678', [
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [
         Validators.required,
         Validators.minLength(8),
       ]),
@@ -100,7 +97,6 @@ export class LoginComponent implements OnInit {
         email === this.loginInfo.email &&
         password === this.loginInfo.password
       ) {
-        console.log('login success');
         this.authService.login();
         this.router.navigate(['/posts']);
       }

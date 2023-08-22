@@ -1,0 +1,12 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title class='red'>Oops, something went wrong. Please try again.</mat-card-title>
+    <!-- <mat-card-title class='red'>{{ errorMessage.name | titlecase}}</mat-card-title> -->
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{errorMessage.message}}</p>
+  </mat-card-content>
+  <mat-card-actions class='btns'>
+    <button (click)="reload()" mat-flat-button color="warn">Reload</button>
+  </mat-card-actions>
+</mat-card>

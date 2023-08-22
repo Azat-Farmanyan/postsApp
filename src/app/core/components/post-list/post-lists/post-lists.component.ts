@@ -1,3 +1,4 @@
+import { ErrorMessage } from './../../../interfaces/interfaces';
 import { PostsService } from './../../../services/posts.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -12,6 +13,13 @@ import { Post } from 'src/app/core/interfaces/interfaces';
 export class PostListsComponent implements OnInit, OnDestroy {
   posts: Post[] = [];
   getPostsSubs: Subscription;
+  loading = false;
+
+  errorMessage: ErrorMessage = {
+    name: '',
+    message: '',
+  };
+  isError = false;
   constructor(private router: Router, private postsService: PostsService) {}
 
   ngOnInit(): void {
@@ -23,9 +31,26 @@ export class PostListsComponent implements OnInit, OnDestroy {
   }
 
   getPosts() {
-    this.getPostsSubs = this.postsService.getPosts().subscribe((resPosts) => {
-      this.posts = resPosts;
-    });
+    this.loading = true;
+    this.getPostsSubs = this.postsService.getPosts().subscribe(
+      (resPosts) => {
+        this.loading = false;
+        this.isError = false;
+
+        this.posts = resPosts;
+      },
+      (err) => {
+        this.setError(err);
+      }
+    );
+  }
+
+  setError(err: ErrorMessage) {
+    this.loading = false;
+    this.isError = true;
+
+    this.errorMessage!.message = err.message;
+    this.errorMessage!.name = err.name;
   }
 
   ngOnDestroy(): void {

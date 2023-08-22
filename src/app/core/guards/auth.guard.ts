@@ -32,10 +32,8 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     | UrlTree {
     const isAuth = localStorage.getItem('isAuth');
     if (isAuth) {
-      console.log('you are authenticated');
       return true;
     } else {
-      console.log('you are not authenticated');
       this.router.navigate(['/login']);
       return false;
     }
@@ -51,10 +49,8 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     | UrlTree {
     const isAuth = localStorage.getItem('isAuth');
     if (isAuth) {
-      console.log('you are authenticated');
       return true;
     } else {
-      console.log('you are not authenticated');
       this.router.navigate(['/login']);
       return false;
     }

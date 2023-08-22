@@ -1,8 +1,8 @@
 import { PostsService } from './../../../services/posts.service';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { Post } from 'src/app/core/interfaces/interfaces';
+import { Subscription, flatMap } from 'rxjs';
+import { ErrorMessage, Post } from 'src/app/core/interfaces/interfaces';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -17,6 +17,15 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
     title: '',
     body: '',
   };
+  loading = false;
+  isError = false;
+  postID: number;
+
+  errorMessage: ErrorMessage = {
+    name: '',
+    message: '',
+  };
+
   private routeSub: Subscription;
 
   constructor(
@@ -34,15 +43,30 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
   }
 
   getPost(id: number) {
-    this.postsService.getPostsById(id).subscribe((postRes) => {
-      // console.log(postRes);
-      this.post = postRes;
-    });
+    this.loading = true;
+    this.postsService.getPostsById(id).subscribe(
+      (postRes) => {
+        this.loading = false;
+        this.post = postRes;
+      },
+      (err) => {
+        this.setError(err);
+      }
+    );
+  }
+
+  setError(err: ErrorMessage) {
+    this.loading = false;
+    this.isError = true;
+
+    this.errorMessage!.message = err.message;
+    this.errorMessage!.name = err.name;
   }
 
   getPostIdFromRoute() {
     this.routeSub = this.route.params.subscribe((params) => {
       const postId = +params['id'];
+      this.postID = postId;
       this.getPost(postId);
     });
   }
