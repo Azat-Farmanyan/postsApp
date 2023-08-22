@@ -18,16 +18,6 @@ const routes: Routes = [
         (m) => m.PostListModule
       ),
   },
-  // {
-  //   path: 'login',
-  //   loadChildren: () =>
-  //     import('./core/components/login/login.module').then((m) => m.LoginModule),
-  // },
-  // { path: '', pathMatch: 'full', redirectTo: 'path' },
-  // {
-  //   path: 'posts/:id',
-  //   component: PostDetailsComponent,
-  // },
   { path: '**', redirectTo: '/login' },
 ];
 

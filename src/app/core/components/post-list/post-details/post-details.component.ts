@@ -17,14 +17,15 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
     title: '',
     body: '',
   };
-  loading = false;
-  isError = false;
-  postID: number;
 
   errorMessage: ErrorMessage = {
     name: '',
     message: '',
   };
+
+  loading = false;
+  isError = false;
+  postID: number;
 
   private routeSub: Subscription;
 
